@@ -16,6 +16,11 @@ class FirstPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Image.asset(
+                'images/owl-2.jpg',
+                height: 200,
+              ),
+              const SizedBox(height: 16),
               TextField(
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
