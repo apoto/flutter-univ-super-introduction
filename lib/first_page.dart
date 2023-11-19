@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_univ_super_introduction/second_page.dart';
 
 class FirstPage extends StatelessWidget {
-  String nameText = '';
+  final List<String> entries = <String>['A', 'B', 'C'];
 
   @override
   Widget build(BuildContext context) {
@@ -10,42 +10,14 @@ class FirstPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('ファースト'),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'images/owl-2.jpg',
-                height: 200,
-              ),
-              const SizedBox(height: 16),
-              TextField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: '名前を入力してください',
-                ),
-                onChanged: (value) {
-                  nameText = value;
-                },
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SecondPage(nameText),
-                      fullscreenDialog: true,
-                    ),
-                  );
-                },
-                child: const Text('次の画面へ'),
-              ),
-            ],
-          ),
-        ),
-      ),
+      body: ListView.builder(
+          itemCount: entries.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              height: 50,
+              child: Center(child: Text('Entry ${entries[index]}')),
+            );
+          }),
     );
   }
 }
